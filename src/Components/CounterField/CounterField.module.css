@@ -1,0 +1,23 @@
+.field {
+    margin: 20px auto;
+    width: 80%;
+    height: 50%;
+    background-color: lightskyblue;
+    border: 5px lightskyblue solid;
+    border-radius: 15px;
+}
+
+.counter {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    font-size: 48px;
+}
+
+.counterMax {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    font-size: 48px;
+    color: crimson;
+}

@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import {CounterField} from "./Components/CounterField/CounterField";
+import {Operations} from "./Components/Operations/Operations";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+
+    const [counter, setCounter] = useState<number>(0)
+
+    const incrementCounterHandler = () => {
+        setCounter(prevState => prevState < 5 ? ++prevState : prevState)
+    }
+
+    const resetCounterHandler = () => {
+        counter > 0 && setCounter(0)
+    }
+
+
+    return (
+        <div className="App">
+            <CounterField counter={counter}/>
+            <Operations counter={counter} increment={incrementCounterHandler} reset={resetCounterHandler}/>
+        </div>
+    );
 }
 
 export default App;
