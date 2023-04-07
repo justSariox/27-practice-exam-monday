@@ -1,9 +1,9 @@
-import {FC} from "react";
+import {FC, ReactNode} from "react";
 import s from './Button.module.css'
 
 type ButtonPropsType = {
     title: string
-    callBack: () => void
+    callBack?: () => void
     disabled?: boolean | undefined
     counter?: number | undefined
 }
