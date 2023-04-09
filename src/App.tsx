@@ -34,6 +34,7 @@ const App = () => {
         <div className="App">
             <Routes>
                 <Route path={'/exam-counter'} element={<Navigate to={'/counter'}/>}/>
+                <Route path={'/*'} element={<Navigate to={'/counter'}/>}/>
                 <Route path={'/counter'} element={<CounterField
                     counter={counter}
                     max={maxValueRange}
