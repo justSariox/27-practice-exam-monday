@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Routes, Route} from 'react-router-dom';
+import {Navigate, Routes, Route} from 'react-router-dom';
 import './App.css';
 import {CounterField} from "./Components/CounterField/CounterField";
 import {Operations} from "./Components/Operations/Operations";
@@ -33,12 +33,12 @@ const App = () => {
     return (
         <div className="App">
             <Routes>
-                <Route path={'/'} element={
-                    <CounterField
-                        counter={counter}
-                        max={maxValueRange}
-                        min={minValueRange}
-                    />}
+                <Route path={'/*'} element={<Navigate to={'/counter'}/>}/>
+                <Route path={'/counter'} element={<CounterField
+                    counter={counter}
+                    max={maxValueRange}
+                    min={minValueRange}
+                />}
                 />
                 <Route path={'Settings'} element={
                     <Settings
