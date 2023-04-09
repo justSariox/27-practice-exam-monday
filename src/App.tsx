@@ -14,10 +14,12 @@ const App = () => {
     useEffect(() => {
         localStorage.setItem('minValueRange', minValueRange.toString());
         localStorage.setItem('maxValueRange', maxValueRange.toString());
-        if (maxValueRange < minValueRange) {
+        if (maxValueRange === minValueRange) {
             setMaxValueRange(minValueRange + 1);
         }
+        setCounter(minValueRange)
     }, [minValueRange, maxValueRange]);
+
 
 
     const incrementCounterHandler = () => {
