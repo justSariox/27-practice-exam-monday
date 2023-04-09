@@ -33,15 +33,15 @@ const App = () => {
     return (
         <div className="App">
             <Routes>
-                <Route path={'/*'} element={<Navigate to={'*/counter'}/>}/>
+                <Route path={'/*'} element={<Navigate to={'exam-counter/counter'}/>}/>
                 {/*<Route path={'/'} element={<Navigate to={'/counter'}/>}/>*/}
-                <Route path={'*/counter'} element={<CounterField
+                <Route path={'exam-counter/counter'} element={<CounterField
                     counter={counter}
                     max={maxValueRange}
                     min={minValueRange}
                 />}
                 />
-                <Route path={'Settings'} element={
+                <Route path={'settings'} element={
                     <Settings
                         min={minValueRange}
                         setMin={setMinValueRange}
