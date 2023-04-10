@@ -21,14 +21,14 @@ export const Operations: FC<OperationsPropsType> = ({increment, reset, counter, 
     const SettingsPage = () => {
         Navigate('/settings')
         if (pathname === '/settings') {
-            Navigate('exam-counter/counter')
+            Navigate('/counter')
         localStorage.setItem('counterValue', JSON.stringify(counter))
         }
     }
 
     const switchButtons = (pathname: string) => {
         switch (pathname) {
-            case '/settings':
+            case 'settings':
                 return (
                     <Button title={'SET'} callBack={SettingsPage}/>
                 )
