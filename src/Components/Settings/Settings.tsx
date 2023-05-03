@@ -4,21 +4,22 @@ import {FC} from "react";
 
 type SettingsPropsType = {
     min: number,
-    setMin: (minValueRange: number) => void
+    setMin: (newMin: number) => void
     max: number
-    setMax: (maxValueRange: number) => void
+    setMax: (newMin: number) => void
 }
 
 export const Settings: FC<SettingsPropsType> = ({ min, max, setMin, setMax}) => {
+    console.log(max)
     return (
         <div className={s.field}>
             <div className={s.params}>
                 <h3>Min value:</h3>
-                <Input counter={min} setCounter={setMin} min={min} max={max} />
+                <Input key={min} min={min} value={min} onChange={setMin} />
             </div>
             <div>
                 <h3>Max value:</h3>
-                <Input counter={max} setCounter={setMax} min={min} max={max}/>
+                <Input value={max} onChange={setMax}/>
             </div>
         </div>
     )

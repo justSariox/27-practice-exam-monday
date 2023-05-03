@@ -14,13 +14,15 @@ type OperationsPropsType = {
 
 
 export const Operations: FC<OperationsPropsType> = ({increment, reset, counter, min, max}) => {
+
+
     const location = useLocation()
     const {pathname} = location
     const Navigate = useNavigate()
 
     const SettingsPage = () => {
         Navigate('/settings')
-        if (pathname === '/settings') {
+        if (location.pathname === '/settings') {
             Navigate('/counter')
         localStorage.setItem('counterValue', JSON.stringify(counter))
         }
@@ -28,14 +30,15 @@ export const Operations: FC<OperationsPropsType> = ({increment, reset, counter, 
 
     const switchButtons = (pathname: string) => {
         switch (pathname) {
-            case 'settings':
+            case '/settings':
                 return (
                     <Button title={'SET'} callBack={SettingsPage}/>
                 )
+            case '/counter':
             default:
                 return (
                     <>
-                        <Button title={'INC'} callBack={increment} disabled={counter >= max}/>
+                        <Button title={'INC'} callBack={increment} disabled={counter === max}/>
                         <Button title={'RESET'} callBack={reset} disabled={counter === min}/>
                         <Button title={'SET'} callBack={SettingsPage}/>
                     </>

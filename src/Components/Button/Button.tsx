@@ -6,6 +6,7 @@ type ButtonPropsType = {
     callBack?: () => void
     disabled?: boolean | undefined
     counter?: number | undefined
+
 }
 
 export const Button: FC<ButtonPropsType> = ({title, callBack, disabled}) => {

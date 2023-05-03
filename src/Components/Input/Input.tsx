@@ -3,28 +3,26 @@ import {ChangeEvent, FC} from "react";
 
 
 type InputPropsType = {
-    counter: number
-    setCounter: (counter: number) => void
-    min: number
-    max: number
+    value: number
+    onChange: (value: number) => void
+    min?: number | undefined
 }
 
-export const Input:FC<InputPropsType> = ({counter, setCounter, max, min }) => {
-
+export const Input:FC<InputPropsType> = ({value, onChange, min }) => {
+    console.log(value)
     const onChangeInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        const value = parseInt(e.currentTarget.value)
-        setCounter(value)
-
+        onChange(+e.currentTarget.value)
     }
 
 
     return (
 
             <input
+
                 className={s.input}
                 type="number"
-                value={counter}
-                min={0 }
+                value={value}
+                min={min}
                 onChange={onChangeInputHandler}
 
             />

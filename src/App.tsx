@@ -4,49 +4,65 @@ import './App.css';
 import {CounterField} from "./Components/CounterField/CounterField";
 import {Operations} from "./Components/Operations/Operations";
 import {Settings} from "./Components/Settings/Settings";
+import {useDispatch, useSelector} from "react-redux";
+import {
+    CounterReducer,
+    CounterState,
+    IncrementCountAC,
+    ResetCounterAC, SetMaxCountAC,
+    SetMinimalAC
+} from "./redux/reducers/CounterReducer";
+import {rootStateType} from "./redux/store/store";
 
 const App = () => {
 
-    const [minValueRange, setMinValueRange] = useState<number>(Number(localStorage.getItem('minValueRange')))
-    const [maxValueRange, setMaxValueRange] = useState<number>(Number(localStorage.getItem('maxValueRange')))
-    const [counter, setCounter] = useState<number>(minValueRange)
-
-    useEffect(() => {
-        localStorage.setItem('minValueRange', minValueRange.toString());
-        localStorage.setItem('maxValueRange', maxValueRange.toString());
-        if (maxValueRange === minValueRange) {
-            setMaxValueRange(minValueRange + 1);
-        }
-        setCounter(minValueRange)
-    }, [minValueRange, maxValueRange]);
-
+    const dispatch = useDispatch()
+    const counter = useSelector<rootStateType, number>(state => state.CounterReducer.counter)
+    const min = useSelector<rootStateType, number>(state => state.CounterReducer.min)
+    const max = useSelector<rootStateType, number>(state => state.CounterReducer.max)
 
 
     const incrementCounterHandler = () => {
-        setCounter(prevState => prevState < maxValueRange && prevState >= minValueRange ? ++prevState : prevState)
+
+        const action = IncrementCountAC()
+        dispatch(action)
+    }
+
+    const handleMinimalChange = (newMin: number) => {
+
+        const action = SetMinimalAC(newMin)
+        dispatch(action);
+    }
+
+    const handleMaxChange = (newMax: number) => {
+        const action = SetMaxCountAC(newMax)
+        dispatch(action)
     }
 
     const resetCounterHandler = () => {
-        counter > minValueRange && setCounter(minValueRange)
+        const action = ResetCounterAC(min)
+        dispatch(action)
     }
 
     return (
+
         <div className="App">
             <Routes>
                 <Route path={'/*'} element={<Navigate to={'/counter'}/>}/>
                 <Route path={'/'} element={<Navigate to={'/counter'}/>}/>
                 <Route path={'/counter'} element={<CounterField
                     counter={counter}
-                    max={maxValueRange}
-                    min={minValueRange}
+                    max={max}
+                    min={min}
                 />}
                 />
                 <Route path={'/settings'} element={
                     <Settings
-                        min={minValueRange}
-                        setMin={setMinValueRange}
-                        max={maxValueRange}
-                        setMax={setMaxValueRange}
+
+                        min={min}
+                        setMin={handleMinimalChange}
+                        max={max}
+                        setMax={handleMaxChange}
                     />}
                 />
             </Routes>
@@ -54,8 +70,8 @@ const App = () => {
                 counter={counter}
                 increment={incrementCounterHandler}
                 reset={resetCounterHandler}
-                min={minValueRange}
-                max={maxValueRange}
+                min={min}
+                max={max}
             />
         </div>
     );
