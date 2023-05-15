@@ -1,15 +1,14 @@
-import {FC, ReactNode} from "react";
+import {FC} from "react";
 import s from './Button.module.css'
+import {IButtonPropsType} from "../../types";
 
-type ButtonPropsType = {
-    title: string
-    callBack?: () => void
-    disabled?: boolean | undefined
-    counter?: number | undefined
 
-}
 
-export const Button: FC<ButtonPropsType> = ({title, callBack, disabled}) => {
+
+export const Button: FC<IButtonPropsType> = ({
+                                                 title,
+                                                 callBack,
+                                                 disabled}) => {
 
     const ButtonStyles = `
     ${s.button}

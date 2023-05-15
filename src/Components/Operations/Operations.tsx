@@ -2,19 +2,10 @@ import s from './Operations.module.css'
 import {Button} from "../Button/Button";
 import {FC} from "react";
 import {useLocation, useNavigate} from 'react-router-dom'
+import {IOperationsPropsType} from "../../types";
 
 
-type OperationsPropsType = {
-    increment?: () => void
-    reset?: () => void
-    setInitial: () => void
-    counter: number
-    min: number
-    max: number
-}
-
-
-export const Operations: FC<OperationsPropsType> = ({
+export const Operations: FC<IOperationsPropsType> = ({
                                                         increment,
                                                         reset,
                                                         counter,

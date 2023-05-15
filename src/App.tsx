@@ -55,7 +55,6 @@ const App = () => {
                 <Route path={'/counter'} element={<CounterField
                     counter={counter}
                     max={max}
-                    min={min}
                 />}
                 />
                 <Route path={'/settings'} element={

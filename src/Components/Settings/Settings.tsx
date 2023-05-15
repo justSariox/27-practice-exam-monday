@@ -1,15 +1,11 @@
 import s from './Settings.module.css'
 import {Input} from "../Input/Input";
 import {FC} from "react";
+import {ISettingsPropsType} from "../../types";
 
-type SettingsPropsType = {
-    min: number,
-    setMin: (newMin: number) => void
-    max: number
-    setMax: (newMin: number) => void
-}
 
-export const Settings: FC<SettingsPropsType> = ({ min, max, setMin, setMax}) => {
+
+export const Settings: FC<ISettingsPropsType> = ({ min, max, setMin, setMax}) => {
     console.log(max)
     return (
         <div className={s.field}>

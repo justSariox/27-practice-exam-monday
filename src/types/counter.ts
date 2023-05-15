@@ -41,3 +41,4 @@ export type ActionsType =
     | SetMaxCountActionType
     | ResetCounterActionType
     | SetInitialCounterActionType
+

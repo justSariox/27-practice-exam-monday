@@ -1,13 +1,11 @@
 import s from './CounterField.module.css'
 import {FC} from "react";
+import {ICounterFieldPropsType} from "../../types";
 
-type CounterFieldPropsType = {
-    counter: number
-    max: number
-    min: number
-}
 
-export const CounterField: FC<CounterFieldPropsType> = ({counter, max, min}) => {
+
+
+export const CounterField: FC<ICounterFieldPropsType> = ({counter, max}) => {
 
     const counterClasses = counter === max ? s.counterMax : s.counter
 
