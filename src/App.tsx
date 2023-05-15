@@ -1,35 +1,37 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {Navigate, Routes, Route} from 'react-router-dom';
 import './App.css';
 import {CounterField} from "./Components/CounterField/CounterField";
 import {Operations} from "./Components/Operations/Operations";
 import {Settings} from "./Components/Settings/Settings";
 import {useDispatch, useSelector} from "react-redux";
+import { CounterSelectors} from "./redux/selectors/CounterSelectors";
 import {
-    CounterReducer,
-    CounterState,
     IncrementCountAC,
-    ResetCounterAC, SetMaxCountAC,
+    ResetCounterAC,
+    SetInitalCounterAC,
+    SetMaxCountAC,
     SetMinimalAC
-} from "./redux/reducers/CounterReducer";
-import {rootStateType} from "./redux/store/store";
+} from "./redux/actions/CounterActions";
 
 const App = () => {
 
     const dispatch = useDispatch()
-    const counter = useSelector<rootStateType, number>(state => state.CounterReducer.counter)
-    const min = useSelector<rootStateType, number>(state => state.CounterReducer.min)
-    const max = useSelector<rootStateType, number>(state => state.CounterReducer.max)
+    const counter = useSelector(CounterSelectors.counter);
+    const min = useSelector(CounterSelectors.min);
+    const max = useSelector(CounterSelectors.max);
 
+    const setInitial = () => {
+        const action = SetInitalCounterAC(min)
+        dispatch(action)
+    }
 
     const incrementCounterHandler = () => {
-
-        const action = IncrementCountAC()
+        const action = IncrementCountAC(1)
         dispatch(action)
     }
 
     const handleMinimalChange = (newMin: number) => {
-
         const action = SetMinimalAC(newMin)
         dispatch(action);
     }
@@ -70,6 +72,7 @@ const App = () => {
                 counter={counter}
                 increment={incrementCounterHandler}
                 reset={resetCounterHandler}
+                setInitial={setInitial}
                 min={min}
                 max={max}
             />

@@ -15,7 +15,7 @@ export const Settings: FC<SettingsPropsType> = ({ min, max, setMin, setMax}) => 
         <div className={s.field}>
             <div className={s.params}>
                 <h3>Min value:</h3>
-                <Input key={min} min={min} value={min} onChange={setMin} />
+                <Input min={0} value={min} onChange={setMin} />
             </div>
             <div>
                 <h3>Max value:</h3>

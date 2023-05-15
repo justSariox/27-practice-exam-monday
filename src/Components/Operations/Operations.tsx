@@ -7,13 +7,21 @@ import {useLocation, useNavigate} from 'react-router-dom'
 type OperationsPropsType = {
     increment?: () => void
     reset?: () => void
+    setInitial: () => void
     counter: number
     min: number
     max: number
 }
 
 
-export const Operations: FC<OperationsPropsType> = ({increment, reset, counter, min, max}) => {
+export const Operations: FC<OperationsPropsType> = ({
+                                                        increment,
+                                                        reset,
+                                                        counter,
+                                                        min,
+                                                        max,
+                                                        setInitial
+}) => {
 
 
     const location = useLocation()
@@ -21,6 +29,7 @@ export const Operations: FC<OperationsPropsType> = ({increment, reset, counter, 
     const Navigate = useNavigate()
 
     const SettingsPage = () => {
+        setInitial()
         Navigate('/settings')
         if (location.pathname === '/settings') {
             Navigate('/counter')
