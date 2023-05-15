@@ -52,12 +52,12 @@ const App = () => {
             <Routes>
                 <Route path={'/*'} element={<Navigate to={'/counter'}/>}/>
                 <Route path={'/'} element={<Navigate to={'/counter'}/>}/>
-                <Route path={'/counter'} element={<CounterField
+                <Route path={'*/counter'} element={<CounterField
                     counter={counter}
                     max={max}
                 />}
                 />
-                <Route path={'/settings'} element={
+                <Route path={'*/settings'} element={
                     <Settings
 
                         min={min}
