@@ -24,7 +24,7 @@ export const Operations: FC<IOperationsPropsType> = ({
         Navigate('/settings')
         if (location.pathname === '/settings') {
             Navigate('/counter')
-        localStorage.setItem('counterValue', JSON.stringify(counter))
+
         }
     }
 
